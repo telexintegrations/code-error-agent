@@ -22,6 +22,8 @@ function createApp(): Express {
       allowedHeaders: ["Content-Type"],
     })
   );
+
+  app.use(cors());  // Allow all origins during testing
   app.use(express.json());
 
   // Debug middleware to log requests
@@ -39,6 +41,11 @@ function createApp(): Express {
   // Register routes from modular files
   app.use(integrationRoutes);
   app.use(tickRoutes);
+
+// Add this before returning the app
+app.get("/", (req, res) => {
+  res.status(200).send("API is running");
+});
 
   return app;
 }
