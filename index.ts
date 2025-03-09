@@ -1,6 +1,5 @@
 import createApp from "./src/app";
 // import config from "./src/config";
-
 if (require.main === module) {
   const app = createApp();
   const port = process.env.PORT || 3000;
@@ -9,5 +8,4 @@ if (require.main === module) {
     // console.log("Configuration:", config);
   });
 }
-
 export default createApp;

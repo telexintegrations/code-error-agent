@@ -1,7 +1,7 @@
 // src/mastra/index.ts
 import "dotenv/config"; // Ensure environment variables are loaded
 import { runStaticAnalysis, formatAnalysisSummary } from "./tools/errorTool";
-import { sendMessageToTelex } from "./telexClient";
+
 
 async function main() {
   console.log("Starting Static Code Analysis...");
@@ -15,8 +15,7 @@ async function main() {
     const summaryMessage = formatAnalysisSummary(analysisSummary);
     console.log("Formatted Error Report:\n", summaryMessage);
 
-    // Send the summary message to Telex
-    await sendMessageToTelex(summaryMessage);
+    
   } catch (error) {
     console.error("An error occurred during static analysis:", error);
   }

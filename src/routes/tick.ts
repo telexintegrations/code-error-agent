@@ -38,21 +38,17 @@
 import { Router, Request, Response } from "express";
 import { runStaticAnalysis, formatAnalysisSummary } from "../tools/errorTool";
 import fetch from "node-fetch";
-
 const router = Router();
-
 router.post("/tick", async (req: Request, res: Response) => {
   let payload: any;
   try {
     // Immediately respond with 202 Accepted
     res.status(202).json({ status: "accepted" });
     payload = req.body;
-
     // Run static analysis to generate a report
     const summary = await runStaticAnalysis();
     const report = formatAnalysisSummary(summary);
     console.log(`[${new Date().toISOString()}] Static analysis report:\n`, report);
-
     // Send the report directly using the return_url from the request body
     await fetch(payload.return_url, {
       method: "POST",
@@ -72,13 +68,11 @@ router.post("/tick", async (req: Request, res: Response) => {
         },
       }),
     });
-
     console.log(
       `[${new Date().toISOString()}] Completed static analysis and report sent.`
     );
   } catch (error: any) {
     console.error(`[${new Date().toISOString()}] Error in tick endpoint:`, error);
-
     if (payload?.return_url) {
       try {
         await fetch(payload.return_url, {
@@ -108,5 +102,4 @@ router.post("/tick", async (req: Request, res: Response) => {
     }
   }
 });
-
 export default router;
