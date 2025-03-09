@@ -14,7 +14,7 @@ router.get("/integration.json", (req: Request, res: Response) => {
           "Analyzes your codebase for static errors and reports them to Telex channels with prioritized error classification.",
         app_logo: "https://example.com/path-to-code-error-agent-logo.png", // update with your logo URL
         app_name: "Code Error Agent",
-        app_url: "https://code-error-agent.production.up.railway.app",
+        app_url: "https://code-error-agent-production.up.railway.app/",
         background_color: "#FF4444",
       },
       integration_category: "Development & Debugging",
@@ -54,9 +54,9 @@ router.get("/integration.json", (req: Request, res: Response) => {
         },
       ],
       tick_url:
-        "https://code-error-agent.production.up.railway.app/tick",
+        "https://code-error-agent-production.up.railway.app/tick",
       target_url:
-        "https://code-error-agent.production.up.railway.app/webhook",
+        "https://code-error-agent-production.up.railway.app/webhook",
     },
   };
 
