@@ -1,24 +1,20 @@
 import { ESLint } from "eslint";
 export interface ExtendedAnalysisSummary {
-  errorCount: number;      // High Priority issues (Breaking errors)
-  warningCount: number;    // Medium Priority issues (Warnings)
+  errorCount: number;      
+  warningCount: number;    
   totalFiles: number;
-  syntaxErrors: number;    // Count of syntax errors
-  typeErrors: number;      // Count of type errors
-  lintingViolations: number; // Count of other linting violations (style, etc.)
+  syntaxErrors: number;   
+  typeErrors: number;     
+  lintingViolations: number; 
 }
-/**
- * Run ESLint on the given directory (or file pattern) and aggregate the results.
- */
+
 export async function runStaticAnalysis(
-  target: string = "./src" // default to src folder; adjust as needed
+  target: string = "./src" 
 ): Promise<ExtendedAnalysisSummary> {
-  // Initialize ESLint and disable file ignoring
   const eslint = new ESLint({
     overrideConfigFile: "./eslint.config.js",
     ignore: false,
   });
-  // Lint files (targeting all TypeScript files under src)
   const results = await eslint.lintFiles(["src/**/*.ts"]);
   let errorCount = 0;
   let warningCount = 0;
@@ -28,7 +24,6 @@ export async function runStaticAnalysis(
   for (const result of results) {
     errorCount += result.errorCount;
     warningCount += result.warningCount;
-    // Go through each message in the result to do categorization
     for (const msg of result.messages) {
       const lowerMsg = msg.message.toLowerCase();
       if (lowerMsg.includes("parsing error")) {
@@ -49,9 +44,7 @@ export async function runStaticAnalysis(
     lintingViolations,
   };
 }
-/**
- * Format a summary report based on analysis results.
- */
+
 export function formatAnalysisSummary(summary: ExtendedAnalysisSummary): string {
   const {
     errorCount,
@@ -62,7 +55,6 @@ export function formatAnalysisSummary(summary: ExtendedAnalysisSummary): string 
     lintingViolations,
   } = summary;
   const status = errorCount > 0 ? "error" : "info";
-  // Create a summary message without timestamp (as per previous changes)
   const message = `
 [Static Code Error Report]
 Analyzed Files: ${totalFiles}

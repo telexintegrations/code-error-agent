@@ -1,3 +1,3 @@
 // // src/broken.ts
-// const greeting = "Hello, world"
-// console.log(greeting)
+const greeting = "Hello, world"
+console.log(greeting)

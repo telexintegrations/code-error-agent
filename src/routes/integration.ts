@@ -12,7 +12,7 @@ router.get("/integration.json", (req: Request, res: Response) => {
       descriptions: {
         app_description:
           "Analyzes your codebase for static errors and reports them to Telex channels with prioritized error classification.",
-        app_logo: "https://example.com/path-to-code-error-agent-logo.png", // update with your logo URL
+        app_logo: "https://example.com/path-to-code-error-agent-logo.png", 
         app_name: "Code Error Agent",
         app_url: "https://code-error-agent-production.up.railway.app/",
         background_color: "#FF4444",
