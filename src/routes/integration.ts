@@ -17,7 +17,7 @@ router.get("/integration.json", (req: Request, res: Response) => {
         app_url: "https://code-error-agent-production.up.railway.app/",
         background_color: "#FF4444",
       },
-      integration_category: "Development & Debugging",
+      integration_category: "AI & Machine Learning",
       integration_type: "interval",
       is_active: true,
       output: [
