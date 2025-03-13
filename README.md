@@ -22,3 +22,28 @@ The Code Error Agent Integration is a lightweight tool designed to capture error
   - JavaScript/TypeScript: ESLint, TypeScript compiler, Prettier.
   - Python: Flake8.
 - **Telex Access**: Valid credentials and API access to your Telex channel.
+
+{
+  "channel_id": "01952917-3cdd-7761-a70e-dd99db8bd139",
+  "return_url": "https://ping.telex.im/v1/webhooks/01952917-3cdd-7761-a70e-dd99db8bd139",
+  "settings": [
+      {
+        "label": "codeBasePath",
+        "type": "text",
+        "required": true,
+        "default": "./src"
+      },
+      {
+        "label": "errorThreshold",
+        "type": "text",
+        "required": true,
+        "default": "1"
+      },
+      {
+        "label": "interval",
+        "type": "text",
+        "required": true,
+        "default": "*/15 * * * *"
+      }
+    ]
+}
